@@ -9,16 +9,16 @@ function MemeResult() {
   const updateData = recoil.useRecoilValue(recoilState.updateData);
   const imageResultUrl = recoil.useRecoilValue(recoilState.imageResultUrl);
   const [imageUrl, setImageUrl] = React.useState('');
-  const [display, setDisplay] = React.useState('none');
+  const [display, setDisplay] = React.useState(false);
 
   React.useEffect(() => {
       let isSubscribe = true;
       if (isSubscribe) {
         if (openDialog.id !== null && imageResultUrl !== '') {
-          setDisplay('block')
+          setDisplay(true)
           setImageUrl(imageResultUrl);
         } else {
-          setDisplay('none')
+          setDisplay(false)
           setImageUrl('https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-6.png')
         }
       }
@@ -29,14 +29,16 @@ function MemeResult() {
 
   return (
     <material.Box id="memeResult" sx={{ display: display }}>
-      <material.Paper className="card">
-        <material.Typography variant='h5' sx={{ textAlign: 'center', marginBottom: '20px' }}>
-          Result
-        </material.Typography>
-        <material.Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <img src={imageUrl} alt="meme" width="400px"/>
-        </material.Box>
-      </material.Paper>
+      {display ? (
+        <material.Paper elevation={0} className="card paper-shadow">
+          <material.Typography variant='h5' sx={{ textAlign: 'center', marginBottom: '20px', fontWeight: '700' }}>
+            Result
+          </material.Typography>
+          <material.Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <img src={imageUrl} alt="meme"/>
+          </material.Box>
+        </material.Paper>
+      ) : null}
     </material.Box>
   )
 }

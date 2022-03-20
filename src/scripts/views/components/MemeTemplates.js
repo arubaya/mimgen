@@ -1,7 +1,6 @@
 import React from 'react';
 import * as material from '@mui/material';
 import * as recoil from 'recoil';
-import InfoIcon from '@mui/icons-material/Info';
 
 import * as recoilState from '../../recoil';
 
@@ -76,7 +75,7 @@ function MemeTemplates() {
         </material.Box>
       </material.DialogContent>
       <material.DialogActions>
-        <material.Button color="error" variant="outlined" onClick={() => handleClose()}>Close</material.Button>
+        <material.Button color="error" variant="contained" className="button-shadow button-border" onClick={() => handleClose()}>Close</material.Button>
       </material.DialogActions>
     </material.Dialog>
   );

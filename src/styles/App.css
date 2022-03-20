@@ -1,17 +1,81 @@
+header {
+  width: 100vw;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+}
+
+.button-border {
+  border: 1px solid var(--text-main) !important;
+}
+
+.button-shadow {
+  box-shadow: var(--shadows-buttonRaised) !important;
+}
+
+.button-shadow:hover {
+  box-shadow: var(--shadows-buttonPressed) !important;
+}
+
+.button-base {
+  width: fit-content;
+  height: fit-content;
+  padding: 10px;
+  border: 1px solid var(--text-main);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.paper-shadow {
+  box-shadow: var(--shadows-raised) !important;
+}
+/* 
+.paper-shadow:hover {
+  box-shadow: var(--shadows-pressed) !important;
+} */
+
+.MuiPaper-root {
+  border: 1px solid var(--text-main);
+}
+
+#logoContainer {
+  display: flex;
+  width: fit-content;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .meme-generator {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
 }
 
 .card {
   padding: 20px;
   margin: 10px;
+  border: 1px solid var(--text-main);
 }
 
 #memeEdit, #memePreview {
-  width: 50%;
+  width: 100%;
 }
 
 #memeResult {
   width: 100%;
+}
+
+@media screen and (min-width: 450px) {
+  .meme-generator {
+    flex-direction: row;
+  }
+
+  #memeEdit, #memePreview {
+    width: 50%;
+  }
+  
+  #memeResult {
+    width: 50%;
+  }
 }

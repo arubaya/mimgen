@@ -30,14 +30,15 @@ function MemeEdit() {
 
   return (
     <material.Box id="memeEdit">
-      <material.Paper className="card">
-        <material.Typography variant='h5' sx={{ textAlign: 'center', marginBottom: '20px' }}>
+      <material.Paper elevation={0} className="card paper-shadow" sx={{ backgroundColor: 'var(--warning-light)' }}>
+        <material.Typography variant='h5' sx={{ textAlign: 'center', marginBottom: '20px', fontWeight: '700' }}>
           Edit Meme
         </material.Typography>
         <material.Button
-          sx={{ marginBottom: '20px' }}
-          color="secondary"
-          variant="outlined"
+          sx={{ marginBottom: '20px', backgroundColor: 'var(--white)' }}
+          color="primary"
+          variant="contained"
+          className="button-shadow button-border"
           onClick={() => handleOpenDialog()}
         >
           Choose Meme Template
@@ -46,7 +47,7 @@ function MemeEdit() {
           <material.TextField onChange={(e) => setFirstText(e.target.value)} sx={{ marginBottom: '20px' }} color="secondary" id="first-text" label="First Text..." variant="outlined" />
           <material.TextField onChange={(e) => setSecondText(e.target.value)} sx={{ marginBottom: '20px' }} color="secondary" id="second-text" label="Second Text..." variant="outlined" />
         </material.Box>
-        <material.Button onClick={() => handleGenerate()} disableElevation sx={{ marginTop: '20px', marginBottom: '20px' }} color="secondary" variant="contained">Generate</material.Button>
+        <material.Button className="button-shadow button-border" onClick={() => handleGenerate()} disableElevation sx={{ marginTop: '20px', marginBottom: '20px' }} color="primary" variant="contained">Generate</material.Button>
       </material.Paper>
     </material.Box>
   )

@@ -1,94 +1,131 @@
 import React from 'react';
 import * as material from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import * as reactRouterDom from 'react-router-dom';
 
-const pages = ['Home', 'About'];
+import Logo from '../../../assets/logo192.png';
 
 function Navbar() {
+  const pages = [
+    ['Home', '/'],
+    ['About', '/about'],
+  ];
+  const [drawerState, setDrawerState] = React.useState(false);
 
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const logo = 'MIMGEN';
+  const drawerWidth = '300px';
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
+  const toggleDrawer = (open) => (event) => {
+    if (
+      event.type === 'keydown' &&
+      (event.key === 'Tab' || event.key === 'Shift')
+    ) {
+      return;
+    }
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
+    setDrawerState(open);
   };
 
   return (
-    <material.AppBar position="static">
-      <material.Container maxWidth="xl">
-        <material.Toolbar disableGutters>
-          <material.Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
-          >
-            {logo}
-          </material.Typography>
-
-          <material.Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <material.IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </material.IconButton>
-            <material.Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
+    <material.Box>
+      <material.Box component='header'>
+        <reactRouterDom.NavLink to="/">
+          <material.Box id='logoContainer'>
+            <material.Avatar alt='MimGen' src={Logo} />
+            <material.Typography
+              variant='h2'
               sx={{
-                display: { xs: 'block', md: 'none' },
+                marginLeft: '20px',
+                fontSize: '30px',
+                fontWeight: '700',
+                color: 'var(--text-main)',
+              }}
+            >
+              MimGen
+            </material.Typography>
+          </material.Box>
+        </reactRouterDom.NavLink>
+        <material.Box sx={{ marginLeft: 'auto' }}>
+          <material.Button
+            className='button-shadow'
+            variant='outlined'
+            color='secondary'
+            onClick={toggleDrawer(true)}
+          >
+            Menu
+          </material.Button>
+        </material.Box>
+      </material.Box>
+      <material.Box sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}>
+        <material.Drawer
+          variant='temporary'
+          open={drawerState}
+          anchor='right'
+          onClose={toggleDrawer(false)}
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile.
+          }}
+          sx={{
+            display: { xs: 'block', md: 'block' },
+            '& .MuiDrawer-paper': {
+              boxSizing: 'border-box',
+              width: '300px',
+            },
+          }}
+        >
+          <material.Box
+            sx={{
+              width: '100%',
+              height: '100vh',
+              display: 'flex',
+              padding: '20px',
+              flexDirection: 'column',
+            }}
+          >
+            <material.Box id='logoContainer'>
+              <material.Avatar alt='MimGen' src={Logo} />
+              <material.Typography
+                variant='h2'
+                sx={{
+                  marginLeft: '20px',
+                  fontSize: '20px',
+                  fontWeight: '700',
+                  color: 'var(--text-main)',
+                }}
+              >
+                MimGen
+              </material.Typography>
+            </material.Box>
+            <material.Box
+              component='nav'
+              sx={{
+                marginTop: '30px',
+                display: 'flex',
+                flexDirection: 'column',
               }}
             >
               {pages.map((page) => (
-                <material.MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <material.Typography color="secondary" textAlign="center">{page}</material.Typography>
-                </material.MenuItem>
+                <reactRouterDom.NavLink
+                  key={page[0]}
+                  to={page[1]}
+                  className='button-base button-shadow'
+                  style={{ backgroundColor: 'var(--primary-light)', marginBottom: '20px' }}
+                >
+                  <material.Typography
+                    variant='button'
+                    sx={{ color: 'var(--text-main)', fontWeight: '600' }}
+                  >
+                    {page[0]}
+                  </material.Typography>
+                </reactRouterDom.NavLink>
               ))}
-            </material.Menu>
+            </material.Box>
+            <material.Box sx={{ width: '100%', textAlign: 'center', marginTop: 'auto' }}>
+              <material.Typography variant="caption">&copy; 2022 MimGen by <a href="https://github.com/arubaya" target="_blank" rel="noreferrer">Arubaya</a></material.Typography>
+            </material.Box>
           </material.Box>
-          <material.Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
-          >
-            {logo}
-          </material.Typography>
-          <material.Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <material.Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: '#212b36', display: 'block' }}
-              >
-                {page}
-              </material.Button>
-            ))}
-          </material.Box>
-        </material.Toolbar>
-      </material.Container>
-    </material.AppBar>
-  )
+        </material.Drawer>
+      </material.Box>
+    </material.Box>
+  );
 }
 
-export default Navbar
+export default Navbar;

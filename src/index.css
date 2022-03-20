@@ -1,13 +1,74 @@
-@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
 @import "./styles/App.css";
+
+:root {
+  --primary-main: #24b78b;
+  --primary-light: #4fc5a2;
+  --primary-dark: #198061;
+
+  --secondary-main: #3386ff;
+  --secondary-light: #3386ff;
+  --secondary-dark: #0048b2;
+  
+  --error-main: #f44336;
+  --error-light: #e57373;
+  --error-dark: #d32f2f;
+
+  --warning-main: #ffa726;
+  --warning-light: #ffb74d;
+  --warning-dark: #f57c00;
+  
+  --info-main: #29b6f6;
+  --info-light: #4fc3f7;
+  --info-dark: #0288d1;
+
+  --success-main: #66bb6a;
+  --success-light: #81c784;
+  --success-dark: #388e3c;
+
+  --text-main: #212b36;
+  --text-secondary: #637381;
+  --text-disabled: #919eab;
+
+  --neutral-main: #eeeeee;
+  --neutral-dark: #bdbdbd;
+  --white: #fff;
+
+  --shadows-buttonRaised: 0.4rem 0.4rem 0 #222;
+  --shadows-buttonPressed: 0.1rem 0.1rem 0 #222;
+  --shadows-raised: 0.6rem 0.6rem 0 #222;
+  --shadows-pressed: 0.2rem 0.2rem 0 #222;
+}
+
 
 * {
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
   box-sizing: border-box;
+  font-family: 'Comfortaa', cursive;
+}
+
+body {
+  width: 100vw;
 }
 
 #mainPage {
   padding: 20px 30px;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  max-width: 400px;
+}
+
+
+@media screen and (min-width: 900px) {
+  #mainPage {
+    padding: 20px 100px;
+  }
 }

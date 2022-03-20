@@ -18,7 +18,13 @@ const theme = createTheme({
     tonalOffset: 0.2,
   },
   typography: {
-    fontFamily: '"Itim", cursive'
+    fontFamily: '"Comfortaa", cursive',
+    button: {
+      fontWeight: 600,
+      fontSize: '0.875rem',
+      textTransform: 'capitalize',
+    },
+
   }
 });
 
