@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const baseURL = 'https://api.m3o.com/v1/memegen';
-const token = 'Bearer OThhOWFmMzQtYzkyYi00Nzc4LTgwYWUtMzgxNzk4NGMxODBj'
+const token = `${process.env.REACT_APP_TOKEN}`
 
 const api = axios.create({
   baseURL,
